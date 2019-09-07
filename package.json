@@ -1,10 +1,17 @@
 {
   "name": "express-react-postgres",
   "version": "1.0.0",
-  "main": "index.js",
+  "engines": {
+    "node": "12.9.0",
+    "npm": "6.10.2"
+  },
+  "private": true,
+  "description": "",
   "scripts": {
-    "install": "(cd client && npm install) && (cd server && npm install)",
-    "start": "concurrently \"cd client && PORT=3000 npm start\" \"cd server && PORT=3001 npm start\""
+    "postinstall": "npm --prefix client install && npm --prefix server install",
+    "start": "concurrently \"cd client && npm start\" \"cd server && npm start\"",
+    "heroku-postbuild": "cd client && npm install && npm run build",
+    "start:prod": "cd server && NODE_ENV=production node server.js"
   },
   "keywords": [],
   "author": "",
@@ -13,5 +20,9 @@
     "concurrently": "^4.1.2"
   },
   "devDependencies": {},
-  "description": ""
+  "cacheDirectories": [
+    "node_modules",
+    "client/node_modules",
+    "server/node_modules"
+  ]
 }

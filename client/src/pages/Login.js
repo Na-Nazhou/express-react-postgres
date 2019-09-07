@@ -7,7 +7,7 @@ import {
   Message,
   Segment
 } from "semantic-ui-react";
-import fetchData from "../api/testAPI";
+import fetchData from "../apis/testAPI";
 
 const Login = () => {
   const [data, setData] = useState("");
