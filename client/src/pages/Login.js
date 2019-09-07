@@ -7,16 +7,12 @@ import {
   Message,
   Segment
 } from "semantic-ui-react";
-import axios from "axios";
+import fetchData from "../api/testAPI";
 
 const Login = () => {
   const [data, setData] = useState("");
   useEffect(() => {
-    const fetchData = async () => {
-      const result = await axios("/api/testAPI");
-      setData(result.data);
-    };
-    fetchData();
+    fetchData().then(result => setData(result.data));
   }, []);
 
   return (
